@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {{ $css := resources.Get "style.css" | resources.PostCSS }}
+  {{ if hugo.IsProduction }}
+  {{ $css = $css | minify | fingerprint | resources.PostProcess }}
+  {{ end }}
+
+  <link rel="stylesheet" href="{{ $css.Permalink }}">
+  <title>{{ .Site.Title }}</title>
+</head>
+
+<body class="h-screen flex justify-center items-center bg-gray-200">
+    <div class="text-6xl text-blue-500 font-extrabold rounded-xl shadow-xl p-10 bg-white">Hello World</div>
+</body>
+
+</html>
